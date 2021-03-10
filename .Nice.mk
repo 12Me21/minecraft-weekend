@@ -18,8 +18,8 @@ printlist = [$1m$(subst $(empty) $(empty),[m$(comma) [$1m,$(2:$(junkdir)/%=[
 cc=@echo '$(call printlist,33,$@)	[37mfrom: $(call printlist,32,$^)[m' ; $(gcc)
 
 # Link
-$(output): $(srcs:%=$(junkdir)/%.o)
-	$(cc) $(LDFLAGS) $^ $(libfiles) $(addprefix -l,$(libs)) -o $@
+$(output): $(srcs:%=$(junkdir)/%.o) $(libfiles)
+	$(cc) $(LDFLAGS) $^ $(addprefix -l,$(libs)) -o $@
 
 # this uses a feature of gcc, which parses a C file
 # and outputs a list of headers it depends on
