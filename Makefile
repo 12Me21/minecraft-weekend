@@ -10,6 +10,8 @@ libs:= dl pthread m
 srcs := $(patsubst %.c,%,$(shell find src/ -name '*.c'))
 output := game
 
+all: $(output) lib/cglm/.git lib/glfw/.git
+
 include .Nice.mk
 
 lib/glad/src/glad.o:
@@ -21,6 +23,10 @@ lib/glfw/src/libglfw3.a: lib/glfw/.git
 lib/noise/libnoise.a:
 	cd lib/noise && make
 
-%/.git:
+lib/%/include:
+	git submodule init
+	git submodule update --depth=1 $(dir $@)
+
+lib/%/.git:
 	git submodule init
 	git submodule update --depth=1 $(dir $@)
