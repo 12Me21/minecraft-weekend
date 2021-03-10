@@ -24,9 +24,7 @@ lib/noise/libnoise.a:
 	cd lib/noise && make
 
 lib/%/include:
-	git submodule init
-	git submodule update --depth=1 $(dir $@)
+	git submodule update --init --depth=1 $(dir $@)
 
 lib/%/.git:
-	git submodule init
-	git submodule update --depth=1 $(dir $@)
+	git submodule update --init --depth=1 $(dir $@)
