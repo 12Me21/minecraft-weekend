@@ -47,7 +47,7 @@ void init() {
     ecs_add(player, C_LIGHT);
 
     struct ControlComponent *c_control = ecs_get(player, C_CONTROL);
-    c_control->mouse_sensitivity = 3.0f;
+    c_control->mouse_sensitivity = 30.0f;
 
     struct PositionComponent *c_position = ecs_get(player, C_POSITION);
     c_position->position = (vec3s) {{ 0, 80, 0 }};
